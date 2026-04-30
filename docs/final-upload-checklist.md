@@ -4,8 +4,8 @@ This is the shortest path from current repo to DoraHacks upload.
 
 ## Must Have Before Final Submit
 
-- [ ] Public website URL
-- [ ] GitHub repository URL
+- [x] Public website URL: `https://ming7177.github.io/creatorpass/`
+- [x] GitHub repository URL: `https://github.com/Ming7177/creatorpass`
 - [ ] 3-5 minute demo video URL
 - [ ] App icon uploaded from `assets/app-icon.svg`
 - [ ] X/Twitter contact

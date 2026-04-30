@@ -64,8 +64,8 @@ CreatorPass packages that workflow into a dashboard:
 
 ## Links To Fill Before Final Upload
 
-- Website URL: TODO
-- GitHub URL: TODO
+- Website URL: https://ming7177.github.io/creatorpass/
+- GitHub URL: https://github.com/Ming7177/creatorpass
 - Demo Video URL: TODO
 - X/Twitter Contact: TODO
 - Bags Project/Token URL: TODO

@@ -23,6 +23,6 @@ CreatorPass currently has no build step and no package dependencies. Deploy the 
 
 ## Required Submission URLs
 
-- Website URL: deployed static app URL
-- GitHub URL: repository URL
+- Website URL: <https://ming7177.github.io/creatorpass/>
+- GitHub URL: <https://github.com/Ming7177/creatorpass>
 - Demo video URL: 3-5 minute walkthrough

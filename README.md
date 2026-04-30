@@ -2,6 +2,7 @@
 
 CreatorPass is a Bags Hackathon Payments-track prototype that turns creator tokens into checkout infrastructure. Creators can create payment links, fan passes, and token-gated memberships, then show fans a Bags-powered checkout preview with fee splits and payment history.
 
+Live site: <https://ming7177.github.io/creatorpass/>  
 Live locally: <http://127.0.0.1:4173/>  
 Static entrypoint: `index.html`  
 Chosen hackathon: [The Bags Hackathon](https://dorahacks.io/hackathon/the-bags-hackathon/detail)
