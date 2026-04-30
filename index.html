@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CreatorPass | Bags creator-token payments</title>
+    <meta
+      name="description"
+      content="CreatorPass helps Bags creators sell payment links, fan passes, and token-gated drops with creator-token requirements."
+    />
+    <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="CreatorPass navigation">
+        <a class="brand" href="#top" aria-label="CreatorPass home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path d="M5 4h8.2c4.1 0 6.8 2.6 6.8 6.4 0 3.9-2.8 6.5-6.9 6.5H10v3.1H5V4Zm5 4.2v4.5h2.8c1.5 0 2.4-.9 2.4-2.3s-.9-2.2-2.4-2.2H10Z" />
+            </svg>
+          </span>
+          <span>CreatorPass</span>
+        </a>
+
+        <nav class="nav-list" aria-label="Primary">
+          <button class="nav-item active" type="button" data-panel="dashboard">
+            <span class="icon grid-icon" aria-hidden="true"></span>
+            Dashboard
+          </button>
+          <button class="nav-item" type="button" data-panel="links">
+            <span class="icon link-icon" aria-hidden="true"></span>
+            Payment links
+          </button>
+          <button class="nav-item" type="button" data-panel="passes">
+            <span class="icon pass-icon" aria-hidden="true"></span>
+            Fan passes
+          </button>
+          <button class="nav-item" type="button" data-panel="gates">
+            <span class="icon lock-icon" aria-hidden="true"></span>
+            Token gates
+          </button>
+          <button class="nav-item" type="button" data-panel="analytics">
+            <span class="icon bars-icon" aria-hidden="true"></span>
+            Analytics
+          </button>
+          <button class="nav-item" type="button" data-panel="payouts">
+            <span class="icon wallet-icon" aria-hidden="true"></span>
+            Payouts
+          </button>
+        </nav>
+
+        <section class="creator-card" aria-labelledby="creator-card-title">
+          <div class="creator-head">
+            <div class="avatar avatar-token" aria-hidden="true">CP</div>
+            <div>
+              <h2 id="creator-card-title">CyberKongz</h2>
+              <p>@cyberkongz</p>
+            </div>
+            <span class="verified" aria-label="Verified creator">OK</span>
+          </div>
+          <dl class="creator-stats">
+            <div>
+              <dt>Creator token</dt>
+              <dd>KONGZ</dd>
+            </div>
+            <div>
+              <dt>Total supply</dt>
+              <dd>1,000,000,000</dd>
+            </div>
+            <div>
+              <dt>Holders</dt>
+              <dd>18,642</dd>
+            </div>
+            <div>
+              <dt>Floor price</dt>
+              <dd>0.842 BAGS</dd>
+            </div>
+          </dl>
+          <a class="secondary-action" href="https://bags.fm/" target="_blank" rel="noreferrer">View on Bags</a>
+        </section>
+      </aside>
+
+      <main class="workspace" id="top">
+        <header class="topbar">
+          <div>
+            <div class="workspace-meta">
+              <p class="workspace-label">Creator Dashboard</p>
+              <span class="demo-ready"><i aria-hidden="true"></i>Demo ready</span>
+            </div>
+            <h1>Creator-token checkout links</h1>
+          </div>
+          <div class="balances" aria-label="Wallet balances">
+            <div class="balance">
+              <span>Bags balance</span>
+              <strong>12,450.75 BAGS</strong>
+            </div>
+            <div class="balance">
+              <span>USDC balance</span>
+              <strong>1,240.50 USDC</strong>
+            </div>
+            <button class="network-pill" type="button" aria-label="Network mainnet">
+              <span aria-hidden="true"></span>
+              Mainnet
+            </button>
+          </div>
+        </header>
+
+        <section class="dashboard-grid" aria-label="Payment link builder">
+          <form class="builder-panel" id="link-builder">
+            <div class="section-heading">
+              <div>
+                <h2>Create payment link</h2>
+                <p>Configure the product, token requirement, and pricing for a Bags-powered checkout.</p>
+              </div>
+              <output class="status-chip" id="builder-status">Draft</output>
+            </div>
+
+            <fieldset class="segmented">
+              <legend>Product type</legend>
+              <label>
+                <input type="radio" name="productType" value="Payment" checked />
+                <span>Payment</span>
+              </label>
+              <label>
+                <input type="radio" name="productType" value="Membership" />
+                <span>Membership</span>
+              </label>
+              <label>
+                <input type="radio" name="productType" value="Fan Pass" />
+                <span>Fan pass</span>
+              </label>
+            </fieldset>
+
+            <label class="field">
+              <span>Title</span>
+              <input id="title-input" name="title" maxlength="64" value="Exclusive Track Download" />
+            </label>
+
+            <label class="field">
+              <span>Description</span>
+              <textarea id="description-input" name="description" maxlength="180">High quality WAV download + behind-the-scenes content.</textarea>
+            </label>
+
+            <div class="two-column">
+              <label class="field">
+                <span>Currency</span>
+                <select id="currency-input" name="currency">
+                  <option value="BAGS">BAGS</option>
+                  <option value="USDC">USDC</option>
+                  <option value="SOL">SOL</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Price</span>
+                <input id="price-input" name="price" inputmode="decimal" value="15" />
+              </label>
+            </div>
+
+            <div class="gate-header">
+              <div>
+                <span>Token requirement</span>
+                <p>Require fans to hold creator tokens before checkout.</p>
+              </div>
+              <label class="switch" aria-label="Enable token requirement">
+                <input id="token-gate-input" type="checkbox" checked />
+                <span></span>
+              </label>
+            </div>
+
+            <div class="gate-box" id="gate-box">
+              <label class="field">
+                <span>Creator token</span>
+                <select id="token-input" name="token">
+                  <option value="KONGZ">KONGZ</option>
+                  <option value="BAGS">BAGS</option>
+                  <option value="CRE8R">CRE8R</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Minimum balance</span>
+                <input id="minimum-input" name="minimum" inputmode="numeric" value="100,000" />
+              </label>
+            </div>
+
+            <div class="two-column">
+              <label class="field">
+                <span>Quantity limit</span>
+                <input id="quantity-input" name="quantity" inputmode="numeric" value="1" />
+              </label>
+              <label class="field">
+                <span>Expiration</span>
+                <select id="expiry-input" name="expiry">
+                  <option>No expiration</option>
+                  <option>24 hours</option>
+                  <option>7 days</option>
+                  <option>30 days</option>
+                </select>
+              </label>
+            </div>
+
+            <button class="primary-action" type="submit">
+              <span class="button-icon" aria-hidden="true"></span>
+              Create link
+            </button>
+          </form>
+
+          <section class="preview-column" aria-label="Live checkout preview">
+            <div class="checkout-card">
+              <div class="preview-title">
+                <h2>Live checkout preview</h2>
+                <span><i aria-hidden="true"></i>Live</span>
+              </div>
+              <div class="checkout-phone">
+                <div class="merchant-row">
+                  <div class="mini-logo" aria-hidden="true">CP</div>
+                  <strong>CyberKongz</strong>
+                  <span class="verified">OK</span>
+                </div>
+                <div class="product-art" aria-hidden="true">
+                  <div class="product-orbit"></div>
+                  <div class="product-glyph">K</div>
+                </div>
+                <h3 id="preview-title">Exclusive Track Download</h3>
+                <p id="preview-description">High quality WAV download + behind-the-scenes content.</p>
+                <div class="checkout-price">
+                  <span id="preview-price">15 BAGS</span>
+                  <small id="preview-usd">~= $12.30 USD</small>
+                </div>
+                <div class="requirement-pill" id="preview-requirement">
+                  <span class="avatar small" aria-hidden="true">K</span>
+                  <span>Hold &gt;= <b id="preview-minimum">100,000 KONGZ</b></span>
+                  <i aria-hidden="true">OK</i>
+                </div>
+                <button class="pay-button" type="button">Pay with Bags</button>
+                <p class="powered">Powered by <strong>Bags</strong></p>
+              </div>
+            </div>
+
+            <aside class="side-stack" aria-label="Link and fee details">
+              <section class="summary-card">
+                <h2>Fee & royalty split</h2>
+                <dl>
+                  <div>
+                    <dt>Sale price</dt>
+                    <dd id="split-price">15.00 BAGS</dd>
+                  </div>
+                  <div>
+                    <dt>Creator royalty</dt>
+                    <dd id="split-royalty">1.50 BAGS</dd>
+                  </div>
+                  <div>
+                    <dt>Platform fee</dt>
+                    <dd id="split-platform">0.38 BAGS</dd>
+                  </div>
+                  <div>
+                    <dt>Network fee est.</dt>
+                    <dd>0.02 BAGS</dd>
+                  </div>
+                  <div class="total-row">
+                    <dt>You receive est.</dt>
+                    <dd id="split-net">13.10 BAGS</dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="summary-card link-card">
+                <h2>Payment link</h2>
+                <div class="link-output">
+                  <div class="generated-link" id="generated-link">Create a link to generate checkout URL.</div>
+                  <button class="copy-link" id="copy-link" type="button" disabled>Copy</button>
+                </div>
+                <div class="share-grid" aria-label="Share destinations">
+                  <button type="button" data-share="X">X</button>
+                  <button type="button" data-share="Discord">Discord</button>
+                  <button type="button" data-share="Telegram">Telegram</button>
+                  <button type="button" data-share="Embed">&lt;/&gt;</button>
+                </div>
+                <p class="notice" id="link-notice">Review settings, then click Create link.</p>
+              </section>
+            </aside>
+          </section>
+        </section>
+
+        <section class="integration-panel" aria-labelledby="integration-title">
+          <div class="section-heading compact">
+            <div>
+              <h2 id="integration-title">Bags integration status</h2>
+              <p>Submission build is static; these are the exact live integration seams for the next branch.</p>
+            </div>
+            <a class="secondary-action inline" href="./docs/bags-integration.md" target="_blank" rel="noreferrer">
+              Integration notes
+            </a>
+          </div>
+          <div class="integration-grid">
+            <article>
+              <span class="integration-state planned">Ready next</span>
+              <h3>Public API client</h3>
+              <p>Use the Bags v1 base URL with `x-api-key` from the developer portal through a backend proxy.</p>
+              <code>https://public-api-v2.bags.fm/api/v1/</code>
+            </article>
+            <article>
+              <span class="integration-state planned">Ready next</span>
+              <h3>SDK branch</h3>
+              <p>Use `@bagsfm/bags-sdk` with a Solana RPC connection once the project moves beyond static hosting.</p>
+              <code>new BagsSDK(apiKey, connection)</code>
+            </article>
+            <article>
+              <span class="integration-state demo">Prototype</span>
+              <h3>Checkout URL</h3>
+              <p>Generated links use the demo domain until a checkout-session endpoint exists.</p>
+              <code>https://creatorpass.xyz/pay/...</code>
+            </article>
+            <article>
+              <span class="integration-state demo">Prototype</span>
+              <h3>Payment events</h3>
+              <p>Rows are simulated now; real events should be recorded after wallet payment verification.</p>
+              <code>tx signature -> payment row</code>
+            </article>
+          </div>
+        </section>
+
+        <section class="payments-panel" aria-labelledby="payments-title">
+          <div class="section-heading compact">
+            <div>
+              <h2 id="payments-title">Recent fan payments</h2>
+              <p id="payment-confirmation">Demo events show how payment links turn creator token holders into buyers.</p>
+            </div>
+            <button class="secondary-action inline" type="button" id="seed-payment">Simulate payment</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Fan</th>
+                  <th>Product</th>
+                  <th>Requirement</th>
+                  <th>Amount</th>
+                  <th>You receive</th>
+                  <th>Tx signature</th>
+                </tr>
+              </thead>
+              <tbody id="payments-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

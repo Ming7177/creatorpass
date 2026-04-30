@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">CreatorPass app icon</title>
+  <desc id="desc">A dark square CreatorPass mark with a teal P.</desc>
+  <rect width="512" height="512" rx="96" fill="#061616"/>
+  <path fill="#00a99d" d="M132 96h166c73 0 122 47 122 114 0 68-50 116-124 116h-62v90H132V96Zm102 84v66h56c27 0 43-13 43-33 0-21-16-33-43-33h-56Z"/>
+  <circle cx="350" cy="162" r="18" fill="#9bf4ed"/>
+</svg>
