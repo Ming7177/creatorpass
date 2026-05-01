@@ -24,27 +24,27 @@
         </a>
 
         <nav class="nav-list" aria-label="Primary">
-          <button class="nav-item active" type="button" data-panel="dashboard">
+          <button class="nav-item active" type="button" data-panel="dashboard" data-target="top">
             <span class="icon grid-icon" aria-hidden="true"></span>
             Dashboard
           </button>
-          <button class="nav-item" type="button" data-panel="links">
+          <button class="nav-item" type="button" data-panel="links" data-target="payment-link-card">
             <span class="icon link-icon" aria-hidden="true"></span>
             Payment links
           </button>
-          <button class="nav-item" type="button" data-panel="passes">
+          <button class="nav-item" type="button" data-panel="passes" data-target="link-builder">
             <span class="icon pass-icon" aria-hidden="true"></span>
             Fan passes
           </button>
-          <button class="nav-item" type="button" data-panel="gates">
+          <button class="nav-item" type="button" data-panel="gates" data-target="gate-box">
             <span class="icon lock-icon" aria-hidden="true"></span>
             Token gates
           </button>
-          <button class="nav-item" type="button" data-panel="analytics">
+          <button class="nav-item" type="button" data-panel="analytics" data-target="payments-panel">
             <span class="icon bars-icon" aria-hidden="true"></span>
             Analytics
           </button>
-          <button class="nav-item" type="button" data-panel="payouts">
+          <button class="nav-item" type="button" data-panel="payouts" data-target="payments-panel">
             <span class="icon wallet-icon" aria-hidden="true"></span>
             Payouts
           </button>
@@ -87,6 +87,7 @@
             <div class="workspace-meta">
               <p class="workspace-label">Creator Dashboard</p>
               <span class="demo-ready"><i aria-hidden="true"></i>Demo ready</span>
+              <span class="demo-scope">Static prototype for Bags Payments track</span>
             </div>
             <h1>Creator-token checkout links</h1>
           </div>
@@ -105,6 +106,35 @@
             </button>
           </div>
         </header>
+
+        <section class="readiness-panel" aria-labelledby="readiness-title">
+          <div>
+            <p class="eyebrow">Judge-ready flow</p>
+            <h2 id="readiness-title">Turn Bags creator-token holders into paying fans.</h2>
+            <p>
+              Build a token-gated checkout link, preview the fan payment screen, copy a prototype URL, then simulate the
+              payment record that a live Bags integration would verify.
+            </p>
+          </div>
+          <dl class="readiness-list">
+            <div>
+              <dt>Track</dt>
+              <dd>Payments</dd>
+            </div>
+            <div>
+              <dt>Live demo</dt>
+              <dd><a href="https://ming7177.github.io/creatorpass/" target="_blank" rel="noreferrer">GitHub Pages</a></dd>
+            </div>
+            <div>
+              <dt>Prototype boundary</dt>
+              <dd>No wallet/API key in browser</dd>
+            </div>
+          </dl>
+        </section>
+
+        <p class="demo-feedback" id="demo-feedback" role="status" aria-live="polite">
+          Start with Membership, create a link, then simulate payment for the judge flow.
+        </p>
 
         <section class="dashboard-grid" aria-label="Payment link builder">
           <form class="builder-panel" id="link-builder">
@@ -232,7 +262,8 @@
                   <span>Hold &gt;= <b id="preview-minimum">100,000 KONGZ</b></span>
                   <i aria-hidden="true">OK</i>
                 </div>
-                <button class="pay-button" type="button">Pay with Bags</button>
+                <button class="pay-button" id="pay-with-bags" type="button">Pay with Bags</button>
+                <p class="checkout-status" id="checkout-status">Create a link to unlock the prototype payment action.</p>
                 <p class="powered">Powered by <strong>Bags</strong></p>
               </div>
             </div>
@@ -264,7 +295,7 @@
                 </dl>
               </section>
 
-              <section class="summary-card link-card">
+              <section class="summary-card link-card" id="payment-link-card">
                 <h2>Payment link</h2>
                 <div class="link-output">
                   <div class="generated-link" id="generated-link">Create a link to generate checkout URL.</div>
@@ -291,6 +322,16 @@
             <a class="secondary-action inline" href="./docs/bags-integration.md" target="_blank" rel="noreferrer">
               Integration notes
             </a>
+          </div>
+          <div class="integration-summary" aria-label="Prototype boundary">
+            <div>
+              <strong>What is live in this demo</strong>
+              <span>Local builder state, fee math, link generation, share feedback, and simulated payment history.</span>
+            </div>
+            <div>
+              <strong>What Bags unlocks next</strong>
+              <span>Server-side token metadata, holder balance checks, checkout sessions, and verified Solana payments.</span>
+            </div>
           </div>
           <div class="integration-grid">
             <article>
@@ -320,7 +361,7 @@
           </div>
         </section>
 
-        <section class="payments-panel" aria-labelledby="payments-title">
+        <section class="payments-panel" id="payments-panel" aria-labelledby="payments-title">
           <div class="section-heading compact">
             <div>
               <h2 id="payments-title">Recent fan payments</h2>

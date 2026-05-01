@@ -22,6 +22,15 @@ const payments = [
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
+const navMessages = {
+  dashboard: "Dashboard overview selected. The main judge flow starts in the payment link builder.",
+  links: "Payment link section selected. Create a URL, copy it, or prepare a share package.",
+  passes: "Fan pass builder selected. Use Membership or Fan Pass to preview creator access products.",
+  gates: "Token gate controls selected. This is where the live Bags holder-balance check will connect.",
+  analytics: "Analytics selected. The table shows simulated payment events for the static prototype.",
+  payouts: "Payouts selected. Net proceeds are estimated in the fee split and payment history.",
+};
+
 const fields = {
   title: $("#title-input"),
   description: $("#description-input"),
@@ -109,6 +118,8 @@ function render() {
     copyButton.textContent = "Copy";
     notice.textContent = "Prototype checkout URL generated. Ready to share or embed in a creator post.";
     notice.classList.add("ready");
+    $("#checkout-status").textContent = "Prototype URL is ready. Pay with Bags will simulate a verified payment event.";
+    $("#checkout-status").classList.add("ready");
   } else {
     link.textContent = "Create a link to generate checkout URL.";
     link.removeAttribute("title");
@@ -116,13 +127,22 @@ function render() {
     copyButton.textContent = "Copy";
     notice.textContent = "Review settings, then click Create link.";
     notice.classList.remove("ready");
+    $("#checkout-status").textContent = "Create a link to unlock the prototype payment action.";
+    $("#checkout-status").classList.remove("ready");
   }
+}
+
+function setDemoFeedback(message, ready = false) {
+  const feedback = $("#demo-feedback");
+  feedback.textContent = message;
+  feedback.classList.toggle("ready", ready);
 }
 
 function resetDemoConfirmation() {
   $("#payment-confirmation").textContent =
     "Demo events show how payment links turn creator token holders into buyers.";
   $("#payment-confirmation").classList.remove("ready");
+  setDemoFeedback("Settings changed. Create a fresh prototype checkout URL before sharing.", false);
 }
 
 function syncFromInputs() {
@@ -158,6 +178,7 @@ function createLink(event) {
   $("#payment-confirmation").textContent =
     "Demo link created and a sample checkout event was added for judge review.";
   $("#payment-confirmation").classList.add("ready");
+  setDemoFeedback("Prototype checkout link is ready. Copy, share, or use Pay with Bags in the preview.", true);
 }
 
 function simulatePayment() {
@@ -175,6 +196,20 @@ function simulatePayment() {
   renderPayments();
   $("#payment-confirmation").textContent = `Demo payment recorded for ${fan}.`;
   $("#payment-confirmation").classList.add("ready");
+  $("#checkout-status").textContent = `Prototype payment confirmed for ${fan}.`;
+  $("#checkout-status").classList.add("ready");
+  setDemoFeedback(`Payment simulation complete. New buyer ${fan} is visible in Recent fan payments.`, true);
+}
+
+function payWithBags() {
+  if (!state.linkCreated) {
+    $("#checkout-status").textContent = "Create a checkout link first so the prototype payment can attach to a URL.";
+    $("#checkout-status").classList.remove("ready");
+    setDemoFeedback("Pay with Bags needs a generated prototype URL first. Click Create link, then try again.", false);
+    return;
+  }
+
+  simulatePayment();
 }
 
 async function copyGeneratedLink() {
@@ -189,10 +224,12 @@ async function copyGeneratedLink() {
     $("#copy-link").textContent = "Copied";
     $("#link-notice").textContent = "Prototype checkout URL copied for the demo.";
     $("#link-notice").classList.add("ready");
+    setDemoFeedback("Prototype checkout URL copied. Share destination buttons now show channel-specific feedback.", true);
   } catch {
     $("#copy-link").textContent = "Copy";
     $("#link-notice").textContent = state.generatedUrl;
     $("#link-notice").classList.add("ready");
+    setDemoFeedback("Clipboard permission was unavailable, so the full prototype URL is shown in the link field.", false);
   }
 }
 
@@ -226,6 +263,7 @@ Object.values(fields).forEach((field) => {
 $("#link-builder").addEventListener("submit", createLink);
 $("#seed-payment").addEventListener("click", simulatePayment);
 $("#copy-link").addEventListener("click", copyGeneratedLink);
+$("#pay-with-bags").addEventListener("click", payWithBags);
 
 $$(".share-grid button").forEach((button) => {
   button.addEventListener("click", () => {
@@ -234,11 +272,13 @@ $$(".share-grid button").forEach((button) => {
     if (!state.linkCreated) {
       $("#link-notice").textContent = `Create the link before sharing to ${button.dataset.share}.`;
       $("#link-notice").classList.remove("ready");
+      setDemoFeedback(`Create the prototype URL before preparing ${button.dataset.share} sharing.`, false);
       return;
     }
     $("#link-notice").textContent =
       `${button.dataset.share} share package prepared for the prototype checkout URL.`;
     $("#link-notice").classList.add("ready");
+    setDemoFeedback(`${button.dataset.share} share package is ready for the generated checkout URL.`, true);
   });
 });
 
@@ -246,6 +286,9 @@ $$(".nav-item").forEach((button) => {
   button.addEventListener("click", () => {
     $$(".nav-item").forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
+    setDemoFeedback(navMessages[button.dataset.panel] || "Demo section selected.", true);
+    const target = document.getElementById(button.dataset.target);
+    target?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
 

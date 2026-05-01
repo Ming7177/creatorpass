@@ -30,6 +30,8 @@ The current build is a polished static demo for judge review. It demonstrates th
 
 The next live integration branch will connect Bags Public API or `@bagsfm/bags-sdk`, keep the API key server-side, verify creator-token holder requirements, and record real Solana payment transactions.
 
+The app also includes a judge-ready summary directly in the UI, so reviewers can see the Payments track fit, live demo scope, and prototype boundary before interacting with the flow.
+
 ## Problem
 
 Creator-token ownership is powerful, but creators still need a simple way to turn holders into paying fans. Without checkout infrastructure, every creator has to assemble holder checks, payment links, digital product fulfillment, and payment records from scratch.
@@ -51,7 +53,7 @@ CreatorPass packages that workflow into a dashboard:
 3. Review the live checkout preview and fee split.
 4. Click `Create link`.
 5. Copy or share the prototype checkout URL.
-6. Click `Simulate payment`.
+6. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
 7. Show the new payment event and the Bags integration status section.
 
 ## Technical Stack
@@ -60,6 +62,7 @@ CreatorPass packages that workflow into a dashboard:
 - No build step
 - No package dependencies
 - Static deployment ready for GitHub Pages, Netlify, or Vercel
+- In-app judge flow, prototype boundary, and interaction feedback states
 - Bags live integration plan documented in `docs/bags-integration.md`
 
 ## Links To Fill Before Final Upload

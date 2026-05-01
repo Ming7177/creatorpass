@@ -27,9 +27,12 @@ Implemented:
 - Creator-token gate toggle
 - Minimum token balance setting
 - Live checkout preview
+- In-app judge-ready flow summary
 - Fee and royalty split calculator
 - Prototype checkout URL generation
 - Copy and share feedback states
+- Pay with Bags prototype payment feedback
+- Sidebar navigation feedback for all demo sections
 - Simulated fan payment events
 - Responsive desktop and mobile layout
 
@@ -39,7 +42,7 @@ Judge flow:
 2. Select `Membership`.
 3. Click `Create link`.
 4. Click `Copy` or a share destination.
-5. Click `Simulate payment`.
+5. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
 6. Show the generated URL, ready status, and new payment row.
 
 ## Prototype Limitations
@@ -81,3 +84,4 @@ The page now includes a `Bags integration status` section that separates live in
 - DoraHacks copy: `docs/dorahacks-submission.md`
 - Bags integration notes: `docs/bags-integration.md`
 - Deployment notes: `docs/deployment.md`
+- Product hardening plan: `docs/product-hardening-plan.md`
