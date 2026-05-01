@@ -30,9 +30,12 @@ Implemented:
 - In-app judge-ready flow summary
 - Fee and royalty split calculator
 - Prototype checkout URL generation
+- Checkout session state for the generated link
+- Fulfillment status after simulated payment
 - Copy and share feedback states
 - Pay with Bags prototype payment feedback
 - Sidebar navigation feedback for all demo sections
+- Submission readiness checklist inside the app
 - Simulated fan payment events
 - Responsive desktop and mobile layout
 
@@ -41,9 +44,10 @@ Judge flow:
 1. Open the dashboard.
 2. Select `Membership`.
 3. Click `Create link`.
-4. Click `Copy` or a share destination.
-5. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
-6. Show the generated URL, ready status, and new payment row.
+4. Show the generated checkout session and fulfillment preview.
+5. Click `Copy` or a share destination.
+6. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
+7. Show the receipt, delivered access state, readiness checklist, and new payment row.
 
 ## Prototype Limitations
 
@@ -58,7 +62,8 @@ Judge flow:
 2. Add wallet connection and holder-balance verification.
 3. Create a checkout-session endpoint that validates token requirements.
 4. Verify Solana payment transactions and record tx signatures.
-5. Launch the project/token on Bags before DoraHacks submission.
+5. Persist fulfillment records and deliver buyer access after verified payment.
+6. Launch the project/token on Bags before DoraHacks submission.
 
 ## Static Deployment
 

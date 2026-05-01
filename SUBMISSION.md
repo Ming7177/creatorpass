@@ -26,7 +26,7 @@ CreatorPass lets Bags creators create token-gated payment links, fan passes, and
 
 CreatorPass is checkout infrastructure for the Bags creator-token economy. A creator configures a product, chooses payment or membership mode, sets a creator-token holding requirement, previews the fan checkout, and generates a shareable prototype checkout URL.
 
-The current build is a polished static demo for judge review. It demonstrates the full product flow: product setup, token-gated access, live checkout preview, fee and royalty split calculation, copy/share states, Bags integration status, and simulated fan payment history.
+The current build is a polished static demo for judge review. It demonstrates the full product flow: product setup, token-gated access, live checkout preview, fee and royalty split calculation, checkout session state, fulfillment after payment, copy/share states, Bags integration status, and simulated fan payment history.
 
 The next live integration branch will connect Bags Public API or `@bagsfm/bags-sdk`, keep the API key server-side, verify creator-token holder requirements, and record real Solana payment transactions.
 
@@ -44,6 +44,7 @@ CreatorPass packages that workflow into a dashboard:
 - Require fans to hold a minimum creator-token balance.
 - Preview the fan checkout before sharing.
 - Estimate creator proceeds after royalties, platform fees, and network fees.
+- Show checkout-session and fulfillment state after payment.
 - Track fan payment events in one place.
 
 ## Demo Flow
@@ -52,9 +53,10 @@ CreatorPass packages that workflow into a dashboard:
 2. Select `Membership`.
 3. Review the live checkout preview and fee split.
 4. Click `Create link`.
-5. Copy or share the prototype checkout URL.
-6. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
-7. Show the new payment event and the Bags integration status section.
+5. Show the generated checkout session and fulfillment preview.
+6. Copy or share the prototype checkout URL.
+7. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
+8. Show the simulated receipt, delivered access state, payment event, readiness checklist, and Bags integration status section.
 
 ## Technical Stack
 
@@ -63,6 +65,7 @@ CreatorPass packages that workflow into a dashboard:
 - No package dependencies
 - Static deployment ready for GitHub Pages, Netlify, or Vercel
 - In-app judge flow, prototype boundary, and interaction feedback states
+- Checkout-session, fulfillment, and submission-readiness states in the static demo
 - Bags live integration plan documented in `docs/bags-integration.md`
 
 ## Links To Fill Before Final Upload

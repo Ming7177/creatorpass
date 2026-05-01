@@ -32,10 +32,17 @@ Goal: make CreatorPass feel like a submit-ready Bags Payments prototype before r
 - Keep README, SUBMISSION, and DoraHacks copy aligned with the live site.
 - Regenerate screenshots only after the product hardening pass is verified.
 
+## Priority 6 - Product Closure
+
+- Show the checkout session that a backend would persist after link creation.
+- Show fulfillment status after a simulated Bags payment.
+- Show an in-app submission readiness checklist so judges can verify the project quickly.
+
 ## Acceptance Criteria
 
 - `node --check app.js` passes.
 - Desktop flow works: select Membership, Create link, Copy, Share, Pay with Bags, Simulate payment.
+- Checkout session, receipt, fulfillment, and readiness checklist update during the demo.
 - Mobile flow works at 390px width without page-level horizontal overflow.
 - Updated screenshots are saved in `docs/creatorpass-desktop-render.png` and `docs/creatorpass-mobile-render.png`.
 - Latest changes are committed and pushed to GitHub.

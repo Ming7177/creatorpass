@@ -9,6 +9,9 @@ const state = {
   minimum: "100,000",
   linkCreated: false,
   generatedUrl: "",
+  sessionId: "",
+  lastBuyer: "",
+  lastReceipt: "",
 };
 
 const payments = [
@@ -61,6 +64,17 @@ function slugify(value) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "")
     .slice(0, 40);
+}
+
+function createSessionId(slug) {
+  const suffix = Math.random().toString(36).slice(2, 8).toUpperCase();
+  return `CP-${slug.slice(0, 10).toUpperCase() || "CHECKOUT"}-${suffix}`;
+}
+
+function setItemState(selector, stateName) {
+  const item = $(selector);
+  item.classList.remove("done", "pending", "next");
+  item.classList.add(stateName);
 }
 
 function renderPayments() {
@@ -120,6 +134,21 @@ function render() {
     notice.classList.add("ready");
     $("#checkout-status").textContent = "Prototype URL is ready. Pay with Bags will simulate a verified payment event.";
     $("#checkout-status").classList.add("ready");
+    $("#session-status").textContent = state.lastReceipt ? "Paid" : "Created";
+    $("#session-status").classList.add("ready");
+    $("#session-id").textContent = state.sessionId;
+    $("#session-holder").textContent = state.tokenGate
+      ? `Prepared: hold >= ${state.minimum || "0"} ${state.token}`
+      : "No holder gate required";
+    $("#session-payment").textContent = state.lastReceipt
+      ? `Confirmed for ${state.lastBuyer}`
+      : "Ready for prototype payment";
+    $("#session-receipt").textContent = state.lastReceipt || "No simulated receipt yet";
+    $("#fulfillment-status").textContent = state.lastReceipt ? "Delivered" : "Ready";
+    $("#fulfillment-status").classList.add("ready");
+    setItemState("#delivery-link", "done");
+    setItemState("#delivery-holder", "done");
+    setItemState("#checklist-link", "done");
   } else {
     link.textContent = "Create a link to generate checkout URL.";
     link.removeAttribute("title");
@@ -129,7 +158,26 @@ function render() {
     notice.classList.remove("ready");
     $("#checkout-status").textContent = "Create a link to unlock the prototype payment action.";
     $("#checkout-status").classList.remove("ready");
+    $("#session-status").textContent = "Not created";
+    $("#session-status").classList.remove("ready");
+    $("#session-id").textContent = "Create a link first";
+    $("#session-holder").textContent = "Waiting for token requirement";
+    $("#session-payment").textContent = "Awaiting prototype payment";
+    $("#session-receipt").textContent = "No simulated receipt yet";
+    $("#fulfillment-status").textContent = "Locked";
+    $("#fulfillment-status").classList.remove("ready");
+    setItemState("#delivery-link", "pending");
+    setItemState("#delivery-holder", "pending");
+    setItemState("#checklist-link", "pending");
   }
+
+  $("#fulfillment-title-copy").textContent = state.title || "Untitled creator product";
+  $("#fulfillment-copy").textContent = state.lastReceipt
+    ? `${state.lastBuyer} now has access to ${state.title || "this creator product"} after the simulated Bags payment.`
+    : `${state.productType} delivery unlocks after the Bags payment and holder check are verified.`;
+  setItemState("#delivery-payment", state.lastReceipt ? "done" : "pending");
+  setItemState("#delivery-access", state.lastReceipt ? "done" : "pending");
+  setItemState("#checklist-payment", state.lastReceipt ? "done" : "pending");
 }
 
 function setDemoFeedback(message, ready = false) {
@@ -154,6 +202,9 @@ function syncFromInputs() {
   state.token = fields.token.value;
   state.minimum = fields.minimum.value.trim();
   state.linkCreated = false;
+  state.sessionId = "";
+  state.lastBuyer = "";
+  state.lastReceipt = "";
   resetDemoConfirmation();
   render();
 }
@@ -164,6 +215,9 @@ function createLink(event) {
   const slug = slugify(state.title || "creator-product");
   state.generatedUrl = `https://creatorpass.xyz/pay/cyberkongz/${slug}?token=${state.token}&min=${encodeURIComponent(state.minimum)}`;
   state.linkCreated = true;
+  state.sessionId = createSessionId(slug);
+  state.lastBuyer = "";
+  state.lastReceipt = "";
   payments.unshift([
     "now",
     "demo_judge.sol",
@@ -184,6 +238,9 @@ function createLink(event) {
 function simulatePayment() {
   const fans = ["bags_builder.sol", "music_whale", "creator_fan_42", "solpay_user"];
   const fan = fans[Math.floor(Math.random() * fans.length)];
+  const signature = `${Math.random().toString(36).slice(2, 5).toUpperCase()}...${Math.random().toString(36).slice(2, 6)}`;
+  state.lastBuyer = fan;
+  state.lastReceipt = signature;
   payments.unshift([
     "now",
     fan,
@@ -191,9 +248,10 @@ function simulatePayment() {
     state.tokenGate ? `${state.minimum} ${state.token}` : "No gate",
     `${numberFromInput(state.price).toFixed(2)} ${state.currency}`,
     $("#split-net").textContent,
-    `${Math.random().toString(36).slice(2, 5).toUpperCase()}...${Math.random().toString(36).slice(2, 6)}`,
+    signature,
   ]);
   renderPayments();
+  render();
   $("#payment-confirmation").textContent = `Demo payment recorded for ${fan}.`;
   $("#payment-confirmation").classList.add("ready");
   $("#checkout-status").textContent = `Prototype payment confirmed for ${fan}.`;

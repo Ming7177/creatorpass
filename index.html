@@ -93,16 +93,16 @@
           </div>
           <div class="balances" aria-label="Wallet balances">
             <div class="balance">
-              <span>Bags balance</span>
+              <span>Demo Bags balance</span>
               <strong>12,450.75 BAGS</strong>
             </div>
             <div class="balance">
-              <span>USDC balance</span>
+              <span>Demo USDC balance</span>
               <strong>1,240.50 USDC</strong>
             </div>
-            <button class="network-pill" type="button" aria-label="Network mainnet">
+            <button class="network-pill" type="button" aria-label="Prototype mode">
               <span aria-hidden="true"></span>
-              Mainnet
+              Prototype
             </button>
           </div>
         </header>
@@ -310,6 +310,76 @@
                 <p class="notice" id="link-notice">Review settings, then click Create link.</p>
               </section>
             </aside>
+          </section>
+        </section>
+
+        <section class="operations-grid" aria-label="Checkout operations">
+          <section class="operations-card session-card" aria-labelledby="session-title">
+            <div class="section-heading compact">
+              <div>
+                <h2 id="session-title">Checkout session</h2>
+                <p>What the backend will persist once this prototype becomes a live Bags checkout.</p>
+              </div>
+              <span class="status-chip" id="session-status">Not created</span>
+            </div>
+            <dl class="session-list">
+              <div>
+                <dt>Session ID</dt>
+                <dd id="session-id">Create a link first</dd>
+              </div>
+              <div>
+                <dt>Holder check</dt>
+                <dd id="session-holder">Waiting for token requirement</dd>
+              </div>
+              <div>
+                <dt>Payment state</dt>
+                <dd id="session-payment">Awaiting prototype payment</dd>
+              </div>
+              <div>
+                <dt>Receipt</dt>
+                <dd id="session-receipt">No simulated receipt yet</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="operations-card fulfillment-card" aria-labelledby="fulfillment-title">
+            <div class="section-heading compact">
+              <div>
+                <h2 id="fulfillment-title">Fulfillment after payment</h2>
+                <p>Shows why this is payment infrastructure, not only a checkout mockup.</p>
+              </div>
+              <span class="status-chip" id="fulfillment-status">Locked</span>
+            </div>
+            <div class="fulfillment-preview">
+              <div class="fulfillment-icon" aria-hidden="true">CP</div>
+              <div>
+                <strong id="fulfillment-title-copy">Exclusive Track Download</strong>
+                <p id="fulfillment-copy">Buyer access unlocks after the Bags payment and holder check are verified.</p>
+              </div>
+            </div>
+            <ul class="delivery-list" aria-label="Delivery steps">
+              <li id="delivery-link" class="pending">Checkout link created</li>
+              <li id="delivery-holder" class="pending">Creator-token holder check prepared</li>
+              <li id="delivery-payment" class="pending">Payment receipt recorded</li>
+              <li id="delivery-access" class="pending">Fan access delivered</li>
+            </ul>
+          </section>
+
+          <section class="operations-card checklist-card" aria-labelledby="checklist-title">
+            <div class="section-heading compact">
+              <div>
+                <h2 id="checklist-title">Submission readiness</h2>
+                <p>Concrete proof points a judge can verify inside the static build.</p>
+              </div>
+            </div>
+            <ul class="readiness-checklist">
+              <li class="done">Static demo deployed on GitHub Pages</li>
+              <li class="done">Payments track use case is visible in-app</li>
+              <li class="done">Prototype boundary is explicit</li>
+              <li id="checklist-link" class="pending">Generated checkout URL</li>
+              <li id="checklist-payment" class="pending">Simulated payment receipt</li>
+              <li class="next">Next branch: server-side Bags API and wallet verification</li>
+            </ul>
           </section>
         </section>
 

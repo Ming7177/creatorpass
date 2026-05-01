@@ -24,7 +24,7 @@ CreatorPass lets Bags creators create token-gated checkout links, fan passes, an
 
 CreatorPass is a payment-link dashboard for the Bags creator-token economy. A creator configures a product, chooses payment or membership mode, sets a creator-token holding requirement, previews the fan checkout, and generates a prototype checkout URL for sharing.
 
-The current demo is a polished static prototype for judge review. It demonstrates the key product workflow: product setup, token-gated access, live checkout preview, fee and royalty split calculation, share states, Pay with Bags prototype feedback, and simulated fan payment history. The planned Bags integration will replace seeded demo data with Bags API or `@bagsfm/bags-sdk` responses, add wallet connection, verify token-holder requirements, and record real Solana payment transactions.
+The current demo is a polished static prototype for judge review. It demonstrates the key product workflow: product setup, token-gated access, live checkout preview, fee and royalty split calculation, checkout session state, fulfillment after payment, share states, Pay with Bags prototype feedback, and simulated fan payment history. The planned Bags integration will replace seeded demo data with Bags API or `@bagsfm/bags-sdk` responses, add wallet connection, verify token-holder requirements, and record real Solana payment transactions.
 
 ## Problem
 
@@ -38,6 +38,7 @@ CreatorPass packages that workflow into a simple dashboard:
 - Require fans to hold a minimum creator-token balance.
 - Preview the fan checkout before sharing.
 - Estimate creator proceeds after royalties, platform fees, and network fees.
+- Show checkout-session state and post-payment fulfillment.
 - Track fan payment events in one place.
 
 ## Demo Flow
@@ -46,15 +47,17 @@ CreatorPass packages that workflow into a simple dashboard:
 2. Select `Membership`.
 3. Review the live checkout preview and fee split.
 4. Click `Create link`.
-5. Copy or share the prototype checkout URL.
-6. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
-7. Show the new payment event in the table.
+5. Show the generated checkout session and fulfillment preview.
+6. Copy or share the prototype checkout URL.
+7. Click `Pay with Bags` in the preview or `Simulate payment` in the table.
+8. Show the simulated receipt, delivered access state, and new payment event in the table.
 
 ## Technical Notes
 
 - Static frontend: `index.html`, `styles.css`, `app.js`
 - No backend API or package dependencies in the polished demo
 - In-app judge flow summary and explicit prototype boundary
+- Checkout-session, fulfillment, and submission-readiness states
 - App icon: `assets/app-icon.svg`
 - Prototype checkout URL domain: `https://creatorpass.xyz/pay/...`
 - Ready for static deployment on GitHub Pages, Netlify, or Vercel
