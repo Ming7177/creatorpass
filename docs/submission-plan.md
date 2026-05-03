@@ -14,12 +14,12 @@ CreatorPass turns Bags creator tokens into checkout infrastructure. A creator ca
 
 ## Judge-Facing Demo Flow
 
-1. Open the dashboard and show CyberKongz creator context.
+1. Open the dashboard and show the Studio Nova demo creator context.
 2. Choose product type: Payment, Membership, or Fan Pass.
 3. Set title, description, currency, price, and token requirement.
 4. Watch the checkout preview update live.
 5. Click `Create link`.
-6. Show generated link, share state, and simulated payment row.
+6. Show generated link, checkout session, fulfillment state, share state, and simulated payment row.
 7. Explain the planned Bags SDK connection and token launch requirement.
 
 ## Differentiation
@@ -57,4 +57,3 @@ CreatorPass turns Bags creator tokens into checkout infrastructure. A creator ca
 - Record 3-5 minute demo video.
 - Launch project/token on Bags.
 - Fill DoraHacks BUIDL metadata.
-

@@ -5,7 +5,7 @@ const state = {
   currency: "BAGS",
   price: 15,
   tokenGate: true,
-  token: "KONGZ",
+  token: "NOVA",
   minimum: "100,000",
   linkCreated: false,
   generatedUrl: "",
@@ -15,11 +15,11 @@ const state = {
 };
 
 const payments = [
-  ["2m ago", "HODL_pepe.sol", "Exclusive Track Download", "100,000 KONGZ", "15.00 BAGS", "13.10 BAGS", "5Xy...9a7B"],
-  ["1h ago", "solana_legend", "Exclusive Track Download", "150,000 KONGZ", "15.00 BAGS", "13.10 BAGS", "3Gk...8f2D"],
-  ["3h ago", "DeFi_Degen", "Exclusive Track Download", "250,000 KONGZ", "15.00 BAGS", "13.10 BAGS", "2mN...c4e9"],
-  ["5h ago", "NFTcollector.sol", "Exclusive Track Download", "110,000 KONGZ", "15.00 BAGS", "13.10 BAGS", "7Lp...d1A3"],
-  ["1d ago", "ape_holder", "Exclusive Track Download", "100,500 KONGZ", "15.00 BAGS", "13.10 BAGS", "9Qz...b7E1"],
+  ["2m ago", "earlyfan.sol", "Exclusive Track Download", "100,000 NOVA", "15.00 BAGS", "13.10 BAGS", "5Xy...9a7B"],
+  ["1h ago", "studio_member", "Exclusive Track Download", "150,000 NOVA", "15.00 BAGS", "13.10 BAGS", "3Gk...8f2D"],
+  ["3h ago", "nova_holder", "Exclusive Track Download", "250,000 NOVA", "15.00 BAGS", "13.10 BAGS", "2mN...c4e9"],
+  ["5h ago", "collector_demo", "Exclusive Track Download", "110,000 NOVA", "15.00 BAGS", "13.10 BAGS", "7Lp...d1A3"],
+  ["1d ago", "fan_access", "Exclusive Track Download", "100,500 NOVA", "15.00 BAGS", "13.10 BAGS", "9Qz...b7E1"],
 ];
 
 const $ = (selector) => document.querySelector(selector);
@@ -213,7 +213,7 @@ function createLink(event) {
   event.preventDefault();
   syncFromInputs();
   const slug = slugify(state.title || "creator-product");
-  state.generatedUrl = `https://creatorpass.xyz/pay/cyberkongz/${slug}?token=${state.token}&min=${encodeURIComponent(state.minimum)}`;
+  state.generatedUrl = `https://creatorpass.xyz/pay/studio-nova/${slug}?token=${state.token}&min=${encodeURIComponent(state.minimum)}`;
   state.linkCreated = true;
   state.sessionId = createSessionId(slug);
   state.lastBuyer = "";

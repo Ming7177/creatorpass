@@ -26,6 +26,8 @@ CreatorPass is a payment-link dashboard for the Bags creator-token economy. A cr
 
 The current demo is a polished static prototype for judge review. It demonstrates the key product workflow: product setup, token-gated access, live checkout preview, fee and royalty split calculation, checkout session state, fulfillment after payment, share states, Pay with Bags prototype feedback, and simulated fan payment history. The planned Bags integration will replace seeded demo data with Bags API or `@bagsfm/bags-sdk` responses, add wallet connection, verify token-holder requirements, and record real Solana payment transactions.
 
+The demo uses a fictional Studio Nova creator and NOVA token so reviewers do not confuse seeded data with a claimed live Bags project.
+
 ## Problem
 
 Creator-token ownership is powerful, but creators still need a simple way to convert token holders into paying fans. Without checkout infrastructure, each creator has to assemble holder checks, payment links, digital product delivery, and payment records from scratch.
@@ -65,7 +67,7 @@ CreatorPass packages that workflow into a simple dashboard:
 ## Limitations
 
 - This build does not perform real wallet connection or on-chain transaction verification.
-- Creator/token data is seeded demo data.
+- Creator/token data is seeded demo data for Studio Nova / NOVA.
 - Bags SDK/API integration is planned but not included in this static polish pass.
 
 ## Next Steps

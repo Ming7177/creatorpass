@@ -90,3 +90,4 @@ The page now includes a `Bags integration status` section that separates live in
 - Bags integration notes: `docs/bags-integration.md`
 - Deployment notes: `docs/deployment.md`
 - Product hardening plan: `docs/product-hardening-plan.md`
+- Judge QA guide: `docs/judge-qa.md`
